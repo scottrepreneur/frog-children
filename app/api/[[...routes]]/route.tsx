@@ -1,6 +1,5 @@
 /** @jsxImportSource frog/jsx */
 
-import BaseLayout from '@/components/BaseLayout'
 import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
 // import { neynar } from 'frog/hubs'
@@ -16,6 +15,30 @@ const app = new Frog({
 
 // Uncomment to use Edge Runtime
 // export const runtime = 'edge'
+
+const BaseLayout = ({ status, children }: any) => {
+  return (
+    <div
+      style={{
+        alignItems: "center",
+        background:
+          status === "response"
+            ? "linear-gradient(to right, #432889, #17101F)"
+            : "black",
+        backgroundSize: "100% 100%",
+        display: "flex",
+        flexDirection: "column",
+        flexWrap: "nowrap",
+        height: "100%",
+        justifyContent: "center",
+        textAlign: "center",
+        width: "100%",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 app.frame('/', (c) => {
   const { buttonValue, inputText, status } = c
